@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BP008_Search_Employee_by_SupervisorName</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BP008_Search_Employee_by_SupervisorName (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BP008_Search_Employee_by_SupervisorName</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import org.junit.Assert;
+<i>2</i>&nbsp;import org.openqa.selenium.By;
+<i>3</i>&nbsp;import org.openqa.selenium.WebDriver;
+<i>4</i>&nbsp;import org.openqa.selenium.firefox.FirefoxDriver;
+<i>5</i>&nbsp;import org.openqa.selenium.firefox.FirefoxOptions;
+<i>6</i>&nbsp;import org.openqa.selenium.support.ui.WebDriverWait;
+<i>7</i>&nbsp;
+<b class="nc"><i>8</i>&nbsp;public class BP008_Search_Employee_by_SupervisorName {</b>
+<i>9</i>&nbsp;    public static void main(String[] args) throws InterruptedException {
+<i>10</i>&nbsp;        WebDriver driver;
+<i>11</i>&nbsp;        WebDriverWait wait;
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;        FirefoxOptions options = new FirefoxOptions();</b>
+<i>14</i>&nbsp;
+<b class="nc"><i>15</i>&nbsp;        options.addArguments(&quot;--disable-notification&quot;);</b>
+<i>16</i>&nbsp;
+<b class="nc"><i>17</i>&nbsp;        System.setProperty(&quot;webdriver.gecko.driver&quot;, &quot;D:\\Sekolah QA Cilsy\\Selenium\\geckodriver.exe&quot;);</b>
+<b class="nc"><i>18</i>&nbsp;        driver = new FirefoxDriver();</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;        //open orangeHRM website
+<b class="nc"><i>21</i>&nbsp;        driver.get(&quot;http://130.211.230.133&quot;);</b>
+<i>22</i>&nbsp;        //verify url orangeHRM
+<b class="nc"><i>23</i>&nbsp;        System.out.println(&quot;Current Url is: &quot; + driver.getCurrentUrl());</b>
+<i>24</i>&nbsp;        //verify homepage/loginpage
+<b class="nc"><i>25</i>&nbsp;        String loginPanel = driver.findElement(By.id(&quot;logInPanelHeading&quot;)).getText();</b>
+<b class="nc"><i>26</i>&nbsp;        Assert.assertEquals(&quot;LOGIN Panel&quot;, loginPanel);</b>
+<i>27</i>&nbsp;        //input Username
+<b class="nc"><i>28</i>&nbsp;        driver.findElement(By.id(&quot;txtUsername&quot;)).sendKeys(&quot;Admin&quot;);</b>
+<i>29</i>&nbsp;        //input Password
+<b class="nc"><i>30</i>&nbsp;        driver.findElement(By.id(&quot;txtPassword&quot;)).sendKeys(&quot;s3Kol4HQA!*&quot;);</b>
+<i>31</i>&nbsp;        //click login Button
+<b class="nc"><i>32</i>&nbsp;        driver.findElement(By.id(&quot;btnLogin&quot;)).click();</b>
+<i>33</i>&nbsp;        //verify url orangeHRM
+<b class="nc"><i>34</i>&nbsp;        System.out.println(&quot;Current Url is: &quot; + driver.getCurrentUrl());</b>
+<i>35</i>&nbsp;        //verify dashboard orangeHRM
+<b class="nc"><i>36</i>&nbsp;        String welcomeDashboard = driver.findElement(By.id(&quot;welcome&quot;)).getText();</b>
+<b class="nc"><i>37</i>&nbsp;        Assert.assertEquals(&quot;Welcome Muhammad&quot;, welcomeDashboard);</b>
+<i>38</i>&nbsp;        //Click PIM button
+<b class="nc"><i>39</i>&nbsp;        driver.findElement(By.id(&quot;menu_pim_viewPimModule&quot;)).click();</b>
+<i>40</i>&nbsp;        //verify url PIMUrl
+<b class="nc"><i>41</i>&nbsp;        System.out.println(&quot;Current Url is: &quot; + driver.getCurrentUrl());</b>
+<b class="nc"><i>42</i>&nbsp;        String employeeList = driver.findElement(By.id(&quot;menu_pim_viewEmployeeList&quot;)).getText();</b>
+<b class="nc"><i>43</i>&nbsp;        Assert.assertEquals(&quot;Employee List&quot;, employeeList);</b>
+<i>44</i>&nbsp;        //input valid employee id
+<b class="nc"><i>45</i>&nbsp;        driver.findElement(By.id(&quot;empsearch_supervisor_name&quot;)).sendKeys(&quot;Muhammad Fakhri&quot;);</b>
+<i>46</i>&nbsp;        //click search button
+<b class="nc"><i>47</i>&nbsp;        driver.findElement(By.id(&quot;searchBtn&quot;)).click();</b>
+<i>48</i>&nbsp;        //verify user is available
+<b class="nc"><i>49</i>&nbsp;        String supervisor = driver.findElement(By.xpath(&quot;/html/body/div[1]/div[3]/div[2]/div/form/div[4]/table/tbody/tr/td[8]&quot;)).getText();</b>
+<b class="nc"><i>50</i>&nbsp;        Assert.assertEquals(&quot;Muhammad Fakhri&quot;, supervisor);</b>
+<i>51</i>&nbsp;    }
+<i>52</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-09-11 01:34</div>
+</div>
+</body>
+</html>
